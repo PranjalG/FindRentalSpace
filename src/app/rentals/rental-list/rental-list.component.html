@@ -1,0 +1,58 @@
+<app-alert [message]="error" *ngIf="error" (close)="onHandleError()">
+    {{ error }}
+</app-alert>
+<div class="row" style="margin-left: 2px;">
+    <div class="col-xs-12" style="padding-left: 0; padding-right: 0;">
+        <div class="col-xs-7" style="padding-left: 0; padding-right: 8px;">
+            <input 
+            type="text" 
+            class="form-control"
+            style="padding-right: 0;"
+            id="search"
+            placeholder="Search by location"
+            [(ngModel)]="userInput">
+        </div>
+        <div class="col-xs-5" style="padding-left: 0; padding-right: 0;">
+            <button class="btn btn-info"
+                style="background-color: #62A4BA; border-color: #62A4BA;"
+                (click)="onSearchAddress()"> 
+                Search {{ magnifyingGlass }}
+            </button>
+            <button class="btn btn-info"
+                style="margin-left: 8px; margin-right: 0; background-color: #62A4BA; border-color: #62A4BA;"
+                (click)="onAddNewSpace()"> 
+                Add New Space {{ plusEmoji }}
+            </button>
+            <button class="btn btn-warning"
+                style="margin-left: 8px; background-color: #62A4BA; border-color: #62A4BA;"
+                (click)="onFilters()"> 
+                {{ filterOptionsVisible ? "Clear Filters" : "Show Filters"}}
+            </button>
+        </div>   
+    </div>
+<app-rental-filter *ngIf="filterOptionsVisible"></app-rental-filter>
+</div>
+<div *ngIf="!filterOptionsVisible">
+    <div *ngIf="rentals.length > 0; else emptyRentals">
+        <div class="row">
+            <div class="col-xs-6 col-md-3" style="padding: 5px;"
+                *ngFor="let rentalElement of rentalSet; let i = index">
+                <app-rental-item 
+                    [newElement]="rentalElement"
+                    [index]="i"
+                    [pageNum]="pageNumber"> 
+                </app-rental-item>
+            </div>
+        </div>
+        <div class="text-center">
+            <a (click)="onPageChange(i+1)"
+                style="cursor: default;"
+                *ngFor="let item of [].constructor(numberOfPages); let i=index"> 
+                {{ i+1 }} &nbsp;
+            </a> 
+        </div>
+    </div>
+    <ng-template #emptyRentals>
+        <h3> No data available! </h3>
+    </ng-template>
+</div>

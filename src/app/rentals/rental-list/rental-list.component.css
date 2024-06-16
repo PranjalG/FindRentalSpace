@@ -1,0 +1,12 @@
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a:focus {
+    background-color: red;
+    text-decoration: underline;
+}

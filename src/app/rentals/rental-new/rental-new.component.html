@@ -1,0 +1,178 @@
+<app-alert [message]="error" *ngIf="error" (close)="onHandleError()">
+    {{ error }}
+</app-alert>
+<h2> Add new space - </h2>
+<div class="row">
+    <div class="col-xs-12">
+        <form [formGroup]="newRentalForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="owner"> Owner Name: </label>
+                <input 
+                    type="text" 
+                    id="owner" required
+                    formControlName="owner"
+                    class="form-control"/>
+            </div>
+            <div class="form-group">
+                <label for="owner_contact"> Owner Contact Number: </label>
+                <input 
+                    type="number" 
+                    id="owner_contact"
+                    formControlName="owner_contact"
+                    class="form-control" required
+                    minlength="10"/>
+            </div>
+            <div class="form-group">
+                <label for="address"> Address: </label>
+                <input 
+                    type="text" 
+                    id="address" required
+                    formControlName="address"
+                    class="form-control"/>
+            </div>
+            <div class="form-group">
+                <label for="landmark"> Landmark: </label>
+                <input 
+                    type="text" 
+                    id="landmark" required
+                    formControlName="landmark"
+                    class="form-control"/>
+            </div>
+            <div class="form-group">
+                <label for="city"> City: </label>
+                <select id="city" class="form-control" formControlName="city" ngModel required>
+                    <option value="Udaipur"> Udaipur </option>
+                    <option value="Gurugram"> Gurugram </option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="type"> Type (Flat or House): </label>
+                <select id="type" class="form-control" formControlName="type" ngModel required>
+                    <option value="Flat"> Flat </option>
+                    <option value="House"> House </option>
+                    <option value="Room"> Room </option>
+                    <option value="Paying Guest- Girls"> Paying Guest- Girls </option>
+                    <option value="Paying Guest- Boys"> Paying Guest- Boys </option>
+                    <option value="Girls Hostel"> Girls Hostel </option>
+                    <option value="Boys Hostel"> Boys Hostel </option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="bedroom_type"> Bedroom Type: </label>
+                <select id="bedroom_type" class="form-control" formControlName="bedroom_type" ngModel required>
+                    <option value="1-BHK"> 1-BHK </option>
+                    <option value="1-RK"> 1-RK </option>
+                    <option value="2-BHK"> 2-BHK </option>
+                    <option value="3-BHK"> 3-BHK </option>
+                    <option value="Other"> Other </option>
+                </select>     
+            </div>
+            <div class="form-group">
+                <label for="distance"> Distance(in Km.) : </label>
+                <input 
+                    type="number" 
+                    id="distance" required
+                    formControlName="distance"
+                    class="form-control"
+                    maxlength="2"/>
+            </div>
+            <div class="form-group">
+                <label for="family_preference"> Family Preference: </label>
+                <select id="family_preference" class="form-control" formControlName="family_preference" ngModel required>
+                    <option value="Family"> Family </option>
+                    <option value="Does not matter"> Does not matter </option>
+                    <option value="Only for girls"> Only for girls </option>
+                    <option value="Only for boys"> Only for boys </option>                    
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="food_preference"> Food Preference: </label>
+                <select id="food_preference" class="form-control" formControlName="food_preference" ngModel required>
+                    <option value="Vegetarian "> Vegetarian </option>
+                    <option value="Does not matter"> Does not matter </option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="rent"> Approximate Rent: </label>
+                <input 
+                    type="number" 
+                    id="rent" required
+                    formControlName="rent"
+                    class="form-control"
+                    maxlength="5"/>
+            </div>
+            <div class="form-group">
+                <label for="refree"> Refree Name: </label>
+                <input 
+                    type="text" 
+                    id="refree" required
+                    formControlName="refree"
+                    class="form-control"/>
+            </div>
+            <div class="form-group">
+                <label for="refree_contact"> Refree Contact: </label>  
+                <input 
+                    type="number" 
+                    id="refree_contact" 
+                    formControlName="refree_contact"
+                    class="form-control"
+                    required minlength="6"/>
+            </div>
+            <div class="form-group">
+                <label for="expected_availability"> Expected Availability: </label>
+                <input 
+                    type="text" required
+                    id="expected_availability"
+                    formControlName="expected_availability"
+                    class="form-control"
+                    placeholder="dd/mm/yyyy"/>
+            </div>
+            <div class="form-group">
+                <label for="comments"> Comments: </label>
+                <textarea
+                        rows="6"
+                        id="comments" required
+                        formControlName="comments"
+                        class="form-control">
+                </textarea>
+            </div>
+            <div class="form-group">
+                <label for="last_update"> Last Update: </label>
+                <input 
+                    type="text" 
+                    id="last_update" required
+                    formControlName="last_update"
+                    class="form-control"
+                    placeholder="dd/mm/yyyy"/>
+            </div>
+            <div class="form-group">
+                <label for="image_path"> Image URL: </label>
+                <input
+                    type="text"
+                    id="image_path" required
+                    formControlName="image_path"
+                    class="form-control"
+                    #image_path/>
+            </div>
+            <div class="form-group">
+                <img [src]="image_path.value" class="img-responsive">
+            </div>
+            <div class="form-group">
+                <button 
+                    type="submit" 
+                    class="btn btn-primary"
+                    style="cursor:pointer; margin-right: 10px; background-color: #62A4BA; border-color: #62A4BA;"
+                    [disabled]="!newRentalForm.valid">
+                    Save
+                </button>
+                <button 
+                    type="button" 
+                    class="btn btn-danger"
+                    style="cursor:pointer; margin: 10px; background-color: #D11920;"
+                    (click)="onCancel()"> 
+                    Cancel
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

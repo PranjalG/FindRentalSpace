@@ -1,0 +1,227 @@
+<div class="col-xs-12" style="margin-top: 8px; padding: 0; accent-color: #5a8199;"> 
+    <form [formGroup]="filterForm" (ngSubmit)="onSubmitFilters()">
+        <div class="form-group col-xs-1" style="padding: 0;">
+            <label style="margin: 0;"> Type: </label>
+            <br>
+            <input
+                class="form-check-input"
+                type="radio" 
+                value="Flat"
+                (formControlName)="value"
+                (change)="onTypeChange($event.target.value)"
+                name="type">
+            <span> {{" "}} </span>
+            <span> Flat </span>
+            <br>
+            <input 
+                class="form-check-input"
+                type="radio"
+                value="House"
+                (formControlName)="value"
+                (change)="onTypeChange($event.target.value)"
+                name="type">
+            <span> {{" "}} </span>
+            <span> House </span>
+            <br>
+            <input 
+                class="form-check-input"
+                type="radio" 
+                value="Room"
+                (formControlName)="value"                    
+                (change)="onTypeChange($event.target.value)"
+                name="type">
+            <span> {{" "}} </span>
+            <span> Room </span>
+            <br>
+            <input
+                class="form-check-input" 
+                type="radio" 
+                value="Other"
+                (formControlName)="value"
+                (change)="onTypeChange($event.target.value)"
+                name="type">
+            <span> {{" "}} </span>
+            <span> Other </span>
+        </div>
+        <div class="form-group col-xs-2" style="padding: 0; padding-left: 20px;">
+            <label style="margin: 0;"> Bedroom Type: </label>
+            <br>
+            <input 
+                class="form-check-input"
+                type="radio" 
+                value="1-BHK / 1-RK"
+                (formControlName)="value"
+                (change)="onBtypeChange($event.target.value)"
+                name="btype">
+                <span> {{" "}} </span>
+            <span> 1RK / 1BHK </span>
+            <br>
+            <input 
+                class="form-check-input"
+                type="radio" 
+                value="2-BHK"
+                (formControlName)="value"
+                (change)="onBtypeChange($event.target.value)"
+                name="btype">
+                <span> {{" "}} </span>
+            <span> 2BHK </span>
+            <br>
+            <input 
+                class="form-check-input"
+                type="radio" 
+                value="3-BHK"
+                (formControlName)="value"
+                (change)="onBtypeChange($event.target.value)"
+                name="btype">
+                <span> {{" "}} </span>
+            <span> 3BHK </span>
+            <br>
+            <input
+                class="form-check-input"
+                type="radio" 
+                value="Other"
+                (formControlName)="value"
+                (change)="onBtypeChange($event.target.value)"
+                name="btype">
+                <span> {{" "}} </span>
+            <span> Other </span>
+            <br>
+        </div>
+        <div class="form-group col-xs-2" style="padding: 0;">
+            <label style="margin: 0;"> Family Preference:  </label>
+            <br>
+            <input 
+                class="form-check-input"
+                type="radio" 
+                value="Family"
+                (formControlName)="value"
+                (change)="onFamilyPrefChange($event.target.value)"
+                name="familyPref">
+                <span> {{" "}} </span>
+            <span> Family </span>
+            <br>
+            <input 
+                class="form-check-input"
+                type="radio" 
+                value="Does not matter"
+                (formControlName)="value"
+                (change)="onFamilyPrefChange($event.target.value)"
+                name="familyPref">
+                <span> {{" "}} </span>
+            <span> Does not matter </span>
+            <br>
+            <input 
+                class="form-check-input"
+                type="radio" 
+                value="Only for girls"
+                (formControlName)="value"
+                (change)="onFamilyPrefChange($event.target.value)"
+                name="familyPref">
+                <span> {{" "}} </span>
+            <span> Only for girls </span>
+            <br>
+            <input 
+                class="form-check-input"
+                type="radio" 
+                value="Only for boys"
+                (formControlName)="value"
+                (change)="onFamilyPrefChange($event.target.value)"
+                name="familyPref">
+                <span> {{" "}} </span>
+            <span> Only for boys </span>
+        </div>
+        <div class="form-group col-xs-2" style="padding: 0;">
+            <label style="margin: 0;"> Food Preference:  </label>
+            <br>
+            <input 
+                class="form-check-input"
+                type="radio" 
+                value="Vegetarian "
+                (formControlName)="value"
+                (change)="onFoodPrefChange($event.target.value)"
+                name="foodPref">
+                <span> {{"  "}} </span>
+            <span> Vegetarian </span>
+            <br>
+            <input 
+                class="form-check-input"
+                type="radio" 
+                value="Does not matter"
+                (formControlName)="value"
+                (change)="onFoodPrefChange($event.target.value)"
+                name="foodPref">
+                <span> {{"  "}} </span>
+            <span> Does not matter </span>
+            <label style="padding-top: 4px;"> Expected Availability:  </label>   
+            <input 
+                class="form-control"
+                type="text"
+                placeholder="mm/yyyy"
+                name="expected_availability"
+                (change)="onExpecAvailChange($event.target.value)">
+        </div>
+        <div class="col-xs-5" style="padding: 0;">
+            <div class="col-xs-6" style="padding: 0; padding-left: 5px;">
+                <div class="form-group">
+                    <label class="text-center" style="margin:0;"> Distance: </label>   
+                    <br> 
+                    <span class="text-left"> Less than- </span>
+                    <input 
+                        class="form-range-input" 
+                        type="range" value="8" min="1" max="15"
+                        (formControlName)="value"
+                        (change)="onDistChange($event.target.value)"
+                        >   
+                    <p class="text-center"> {{ distance }} Km. </p>        
+                </div>
+            </div>
+            <div class="col-xs-6" style="padding: 0; padding-left: 8px;">
+                <div class="form-group">
+                    <label class="text-center" style="margin:0;"> Rent:  </label>   
+                    <br> 
+                    <span class="text-left"> Maximum rent- </span>
+                    <input 
+                        class="form-range-input" 
+                        type="range" value="15" min="1" max="50"
+                        (formControlName)="value"
+                        (change)="onRentChange($event.target.value)"
+                        >   
+                    <p class="text-center"> Rs.{{ rent }}000 </p>          
+                </div>
+            </div>    
+            <div class="col-xs-12" style="margin:0; padding:3px;">                  
+                <button class="btn btn-primary btn-block"
+                    type="submit"
+                    style="margin-left: 6px; background-color: #62A4BA; border-color: #62A4BA;"> 
+                    Apply Filters
+                </button>
+            </div>
+        </div>
+    </form>  
+</div>
+
+<div *ngIf="rentals.length > 0">
+    <div class="row" style="margin-right: 0;">
+        <div class="col-xs-6 col-md-3" style="padding: 5px;"
+            *ngFor="let rentalElement of rentalFilteredSet; let i = index">
+            <app-rental-item 
+                [newElement]="rentalElement"
+                [index]="i"
+                [pageNum]="pageNumber"> 
+            </app-rental-item>
+        </div>
+    </div>
+    <div class="text-center">
+        <a (click)="onPageChange(i+1)"
+            style="cursor: default;"
+            *ngFor="let item of [].constructor(numberOfPages); let i=index"> 
+            {{ i+1 }} &nbsp;
+        </a> 
+    </div>
+</div>
+<div *ngIf="filterApplied && rentals.length == 0">
+    <h4 style="color: rgb(255, 25, 0);"> No data matches the applied filters! </h4 >
+</div>
+
+
+

@@ -1,0 +1,24 @@
+<a  
+    style="cursor: pointer;"
+    class="list-group-item clearfix">
+    <div>
+        <div>
+            <h4 class="pull-left list-group-item-heading text-center" style="margin-bottom: 10px; margin-top: 10px;">
+            {{ compareElement.bedroom_type+" "+compareElement.type?.substring(0, 8) }}
+            </h4>
+            <button class="pull-right btn btn-danger" (click)="onRemove(compareElement._id)"> X </button>
+        </div>
+        <img 
+                src={{compareElement.image_path}}
+                alt="Something"
+                class="img-responsive"
+                style="width:240px; height: 180px">
+        <br>
+        <p class="list-group-item-text" *ngIf="parameterForm.value.rentChecked"> Rent: Rs. {{ compareElement.rent }} </p>
+        <p class="list-group-item-text" *ngIf="parameterForm.value.distChecked"> Distance: {{ compareElement.distance }} Km </p>
+        <p class="list-group-item-text" *ngIf="parameterForm.value.famPrefChecked"> {{ compareElement.family_preference }} </p>
+        <p class="list-group-item-text" *ngIf="parameterForm.value.foodPrefChecked"> {{ compareElement.food_preference }} </p>
+        <p class="list-group-item-text" *ngIf="parameterForm.value.expAvChecked"> Available by: {{ compareElement.expected_availability }} </p>
+        <p class="list-group-item-text" *ngIf="parameterForm.value.ownerChecked"> Owner Contact: {{ compareElement.owner_contact }} </p>
+    </div>
+</a>

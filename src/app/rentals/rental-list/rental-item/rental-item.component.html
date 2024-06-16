@@ -1,0 +1,21 @@
+<a  
+    [routerLink]="[newElement._id]"
+    routerLinkActive="active"
+    class="list-group-item clearfix">
+    <div>
+        <div>
+            <h4 class="pull-left list-group-item-heading text-center">{{ newElement.bedroom_type }} {{ newElement.type?.substring(0, 8) }} </h4>
+            <p class="pull-right" (click)="onClickHeart()" style="font-size: 2rem; margin-bottom: 5px;"> {{ cardSelected ? likeEmoji : unlikeEmoji }} </p>
+        </div>
+        <img 
+            [src]="newElement.image_path" 
+            alt="{{ newElement.owner }}">
+        <br>
+        <br>
+        <p class="list-group-item-text"> {{ newElement.landmark?.substring(0, 22) + "..." }} </p>
+        <p class="list-group-item-text"> Distance: {{ newElement.distance}} Km </p>
+        <p class="list-group-item-text"> Rent : Rs. {{ newElement.rent }} </p>
+    </div>
+</a>
+
+<!-- [routerLink]="[newElement._id]" -->

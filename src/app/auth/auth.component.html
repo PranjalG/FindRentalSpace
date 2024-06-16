@@ -1,0 +1,60 @@
+<ng-template appPlaceholder></ng-template>
+<div class="row">
+    <div class="alert alert-danger text-center" *ngIf="error">
+        <p> {{ error }} </p>
+    </div>
+    <app-alert [message]="error" *ngIf="error" (close)="onHandleError()">
+        {{ error }}
+    </app-alert>
+    <div *ngIf="isLoading" class="text-center">
+        <app-loading-spinner></app-loading-spinner>
+    </div>
+    <div class="col-xs-2"></div>
+    <div class="col-xs-8">
+        <form [formGroup]="authFormGroup" (ngSubmit)="onSubmit()" *ngIf="!isLoading">
+            <h4 style="color: #5A8199;"> Sign in </h4>
+            <div class="form-group">
+                <select class="form-control" id="domain" formControlName="domain">
+                    <option value="choose"> Choose a domain </option>
+                    <option value="SML" [selected]="true"> SML </option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input 
+                    placeholder="Username"
+                    type="text" 
+                    id="email"
+                    class="form-control"
+                    formControlName="username"
+                    name="email"
+                    required/>
+            </div>
+            <div class="form-group">
+                <input
+                    placeholder="Password" 
+                    type="password" 
+                    id="password"
+                    class="form-control"
+                    formControlName="password"
+                    name="password"
+                    required minlength="6"/>
+            </div>
+            <div class="text-center">
+                <button 
+                    class="btn btn-primary" 
+                    style="margin-right: 20px; background-color: #62A4BA; border-color: #62A4BA;"
+                    type="submit"
+                    [disabled]="!authFormGroup.valid"> 
+                    Login
+                </button>
+                <!-- <button 
+                    class="btn btn-primary" 
+                    type="button"
+                    style="background-color: #62A4BA; border-color: #62A4BA;"
+                    (click)="onSwitchMode()"> 
+                    Switch to {{ isLoginMode ? 'Sign Up' : 'Login' }} 
+                </button> -->
+            </div>
+        </form>
+    </div>
+</div>

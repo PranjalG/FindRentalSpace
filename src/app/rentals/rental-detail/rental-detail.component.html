@@ -1,0 +1,49 @@
+<app-alert [message]="error" *ngIf="error" (close)="onHandleError()">
+    {{ error }}
+</app-alert>
+<div class="row">
+    <div class="col-xs-12 text-center">
+        <h3> {{ rental.bedroom_type }} {{ rental.type}}</h3>
+        <img 
+        [src]="rental.image_path" 
+        alt="{{ rental.type + ' ' + rental.bedroom_type}}"
+        style="max-width: 300px">
+        <br>
+        <br>
+        <div>
+            <button 
+                type="button" 
+                class="btn btn-info"
+                [(disabled)]="!currentUser"
+                (click)="onEditRental()"
+                style="cursor: pointer; margin-right:7px; background-color: #62A4BA; border-color: #62A4BA;">
+                Edit {{ pencilEmoji }}
+            </button>
+            <button 
+                type="button" 
+                class="btn btn-danger"
+                [(disabled)]="!currentUser"
+                (click)="onDeleteRental()" 
+                style="cursor: pointer; background-color: #D11920;">
+                Delete rental
+            </button>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <br>
+        <h3 style="margin-top: 0px;"> {{ rental.bedroom_type +" "+ rental.type }} </h3>
+        <p> Owner : {{ rental.owner }} </p>
+        <p> Owner Contact Number : {{ rental.owner_contact}} </p>
+        <p> Address : {{ rental.address }} </p>
+        <p> Landmark : {{ rental.landmark }} </p>
+        <p> Distance (in Km.) : {{ rental.distance }} </p>
+        <p> Family Preference : {{ rental.family_preference }} </p>
+        <p> Food Preference : {{ rental.food_preference }} </p>
+        <p> Refree : {{ rental.refree }} </p>
+        <p> Refree Contact : {{ rental.refree_contact }} </p>
+        <p> Expected Availability : {{rental.expected_availability }} </p>
+        <p> Comments : {{ rental.comments }} </p>
+        <p> Last Updated : {{ rental.last_update }} </p>
+        <p> Approximate Rent : Rs.{{ rental.rent }} </p>
+    </div>
+</div>
